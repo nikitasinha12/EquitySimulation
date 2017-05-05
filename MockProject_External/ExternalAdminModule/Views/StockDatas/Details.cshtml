@@ -1,0 +1,83 @@
+﻿@model ExternalAdminModule.StockData
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    StockData
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.ID)</td>
+                <td>          :          </td>
+                <td>@Html.DisplayFor(model => model.ID)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Name)</td>
+                <td>          :          </td>
+                <td>@Html.DisplayFor(model => model.Name)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.QuantityAvailable)</td>
+                <td>          :          </td>
+                <td>@Html.DisplayFor(model => model.QuantityAvailable)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.MarketPrice)</td>
+                <td>          :          </td>
+                <td>@Html.DisplayFor(model => model.MarketPrice)</td>
+            </tr>
+           
+        </tbody>
+    </table>
+</div>
+@*<div>
+    <h4>StockData</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID) : @Html.DisplayFor(model => model.ID)
+        </dt>
+
+        <dd>
+         
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)
+        </dt>
+
+        <dd>
+           
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuantityAvailable): @Html.DisplayFor(model => model.QuantityAvailable)
+        </dt>
+
+        <dd>
+           
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MarketPrice): @Html.DisplayFor(model => model.MarketPrice)
+        </dt>
+
+        <dd>
+           
+        </dd>
+
+    </dl>
+</div>*@
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Symbol }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

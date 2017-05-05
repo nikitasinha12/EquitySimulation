@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="74822d99-186a-429f-a784-c8ad7201a0e8" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/ExchangeSystem/TraderFillService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="TraderFillService.xsd" MetadataType="Schema" ID="a8d5b205-633d-47ff-af5a-18d6ebe142d1" SourceId="1" SourceUrl="http://localhost/ExchangeSystem/TraderFillService.svc?xsd=xsd2" />
+    <MetadataFile FileName="TraderFillService1.xsd" MetadataType="Schema" ID="970615e9-c605-42bd-b33d-0b7a8b6da1f6" SourceId="1" SourceUrl="http://localhost/ExchangeSystem/TraderFillService.svc?xsd=xsd0" />
+    <MetadataFile FileName="TraderFillService2.xsd" MetadataType="Schema" ID="d12c396b-1074-4ca8-934f-9046af503327" SourceId="1" SourceUrl="http://localhost/ExchangeSystem/TraderFillService.svc?xsd=xsd1" />
+    <MetadataFile FileName="TraderFillService.wsdl" MetadataType="Wsdl" ID="6a63d703-9d9a-4b11-bffe-32dedaeca330" SourceId="1" SourceUrl="http://localhost/ExchangeSystem/TraderFillService.svc?wsdl" />
+    <MetadataFile FileName="TraderFillService.disco" MetadataType="Disco" ID="37add652-866d-4e4a-b76c-0ee6628b02e6" SourceId="1" SourceUrl="http://localhost/ExchangeSystem/TraderFillService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,119 @@
+﻿@model IEnumerable<ExternalAdminModule.ServiceRequest>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+
+<html lang="en">
+<head>
+    <title>Bootstrap Case</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-retweet"></span>Exchange PlatForm</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://localhost/WebApplication8/Home/AboutUs">About Us</a></li>
+            </ul>
+        </div>
+    </nav>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BlockID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TraderID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QtyRequested)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QtyAllocated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Side)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeStamp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status.StatusName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockData.Name)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BlockID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TraderID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QtyRequested)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QtyAllocated)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Side)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TimeStamp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status.StatusName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StockData.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.RequestID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.RequestID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.RequestID })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <footer>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel panel-default my_panel">
+                            <p style="text-align:center">COPYRIGHT 2017</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,39 @@
+﻿<Window x:Class="Mock_Project.Traders.Cancel_Blocks.CancelBlockWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CancelBlockWindow" Height="850" Width="1440"
+        WindowState="Maximized" ResizeMode="NoResize"
+        xmlns:model="clr-namespace:Mock_Project">
+
+    <Grid>
+        <DataGrid ColumnWidth="*" x:Name="BlockDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="289" VerticalAlignment="Top" Width="709" ItemsSource="{Binding BlockCheckedList}" IsReadOnly="True" SelectionMode="Extended" Margin="304,161,0,0">
+            <DataGrid.Columns>
+
+                <DataGridTemplateColumn Header="">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Binding="{Binding Path=BlockID,Mode=OneWay}"  Header="Block ID"/>
+                <DataGridTextColumn Binding="{Binding Path=UserID,Mode=OneWay}"  Header="User ID"/>
+                <DataGridTextColumn Binding="{Binding Path=Block_status.StatusName,Mode=OneWay}"  Header="Block Status"/>
+                <DataGridTextColumn Binding="{Binding Path=Symbol_Properties.Symbol,Mode=OneWay}"  Header="Symbol"/>
+                <DataGridTextColumn Binding="{Binding Path=ExecutedQty,Mode=OneWay}"  Header="Executed Qty"/>
+                <DataGridTextColumn Binding="{Binding Path=LimitPrice,Mode=OneWay}"  Header="Limit Price"/>
+                <DataGridTextColumn Binding="{Binding Path=TotalQty,Mode=OneWay}"  Header="Total Qty"/>
+                <DataGridTextColumn Binding="{Binding Path=StopPrice,Mode=OneWay}"  Header="Stop Price"/>
+                
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Content="Remove Block" HorizontalAlignment="Left" Height="22" Margin="802,485,0,0" VerticalAlignment="Top" Width="90" Command="{Binding CancelBlockCommand}" />
+        <Button Content="Back" HorizontalAlignment="Left" Margin="446,485,0,0" VerticalAlignment="Top" Width="75" Command="{Binding DashBoardPageCommand}"/>
+
+        <model:HeaderUserControl HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <model:FooterUserControl HorizontalAlignment="Left" Margin="-18,770,-20,-71" VerticalAlignment="Top" Width="1472" Height="123"/>
+    </Grid>
+</Window>

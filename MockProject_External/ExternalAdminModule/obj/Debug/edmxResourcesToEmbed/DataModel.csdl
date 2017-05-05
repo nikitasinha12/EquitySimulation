@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ServiceRequest">
+    <Key>
+      <PropertyRef Name="RequestID" />
+    </Key>
+    <Property Name="RequestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BlockID" Type="Int64" Nullable="false" />
+    <Property Name="TraderID" Type="Int64" Nullable="false" />
+    <Property Name="Symbol" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="QtyRequested" Type="Int64" Nullable="false" />
+    <Property Name="QtyAllocated" Type="Int64" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Side" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StatusID" Type="Int16" Nullable="false" />
+    <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="7" />
+    <NavigationProperty Name="Status" Relationship="Self.FK_ServiceRequest_Status" FromRole="ServiceRequest" ToRole="Status" />
+    <NavigationProperty Name="StockData" Relationship="Self.FK_ServiceRequest_StockData" FromRole="ServiceRequest" ToRole="StockData" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="StatusID" />
+    </Key>
+    <Property Name="StatusID" Type="Int16" Nullable="false" />
+    <Property Name="StatusName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ServiceRequests" Relationship="Self.FK_ServiceRequest_Status" FromRole="Status" ToRole="ServiceRequest" />
+    <NavigationProperty Name="Transactions" Relationship="Self.FK_Transactions_Status" FromRole="Status" ToRole="Transactions" />
+  </EntityType>
+  <EntityType Name="StockData">
+    <Key>
+      <PropertyRef Name="Symbol" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Symbol" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="QuantityAvailable" Type="Int64" Nullable="false" />
+    <Property Name="MarketPrice" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ServiceRequests" Relationship="Self.FK_ServiceRequest_StockData" FromRole="StockData" ToRole="ServiceRequest" />
+    <NavigationProperty Name="Transactions" Relationship="Self.FK_Transactions_StockData" FromRole="StockData" ToRole="Transactions" />
+  </EntityType>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="TransactionID" />
+    </Key>
+    <Property Name="TransactionID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BlockID" Type="Int64" Nullable="false" />
+    <Property Name="TraderID" Type="Int64" Nullable="false" />
+    <Property Name="Symbol" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="QtyRequested" Type="Int64" Nullable="false" />
+    <Property Name="QtyAllocated" Type="Int64" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Side" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StatusID" Type="Int16" Nullable="false" />
+    <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="7" />
+    <NavigationProperty Name="Status" Relationship="Self.FK_Transactions_Status" FromRole="Transactions" ToRole="Status" />
+    <NavigationProperty Name="StockData" Relationship="Self.FK_Transactions_StockData" FromRole="Transactions" ToRole="StockData" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="UserId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <Association Name="FK_ServiceRequest_Status">
+    <End Role="Status" Type="Self.Status" Multiplicity="1" />
+    <End Role="ServiceRequest" Type="Self.ServiceRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="StatusID" />
+      </Principal>
+      <Dependent Role="ServiceRequest">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceRequest_StockData">
+    <End Role="StockData" Type="Self.StockData" Multiplicity="1" />
+    <End Role="ServiceRequest" Type="Self.ServiceRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StockData">
+        <PropertyRef Name="Symbol" />
+      </Principal>
+      <Dependent Role="ServiceRequest">
+        <PropertyRef Name="Symbol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transactions_Status">
+    <End Role="Status" Type="Self.Status" Multiplicity="1" />
+    <End Role="Transactions" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="StatusID" />
+      </Principal>
+      <Dependent Role="Transactions">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transactions_StockData">
+    <End Role="StockData" Type="Self.StockData" Multiplicity="1" />
+    <End Role="Transactions" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StockData">
+        <PropertyRef Name="Symbol" />
+      </Principal>
+      <Dependent Role="Transactions">
+        <PropertyRef Name="Symbol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="External_DatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ServiceRequests" EntityType="Self.ServiceRequest" />
+    <EntitySet Name="Status" EntityType="Self.Status" />
+    <EntitySet Name="StockDatas" EntityType="Self.StockData" />
+    <EntitySet Name="Transactions" EntityType="Self.Transaction" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_ServiceRequest_Status" Association="Self.FK_ServiceRequest_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="ServiceRequest" EntitySet="ServiceRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceRequest_StockData" Association="Self.FK_ServiceRequest_StockData">
+      <End Role="StockData" EntitySet="StockDatas" />
+      <End Role="ServiceRequest" EntitySet="ServiceRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transactions_Status" Association="Self.FK_Transactions_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Transactions" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transactions_StockData" Association="Self.FK_Transactions_StockData">
+      <End Role="StockData" EntitySet="StockDatas" />
+      <End Role="Transactions" EntitySet="Transactions" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ExchangeSystem" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ExchangeSystem" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Request">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BlockID" type="xs:long" />
+      <xs:element minOccurs="0" name="QtyAllocated" type="xs:long" />
+      <xs:element minOccurs="0" name="QtyRequested" type="xs:long" />
+      <xs:element minOccurs="0" name="RequestID" type="xs:int" />
+      <xs:element minOccurs="0" name="Side" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="tns:Status" />
+      <xs:element minOccurs="0" name="StatusID" type="xs:short" />
+      <xs:element minOccurs="0" name="StockData" nillable="true" type="tns:StockData" />
+      <xs:element minOccurs="0" name="Symbol" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TimeStamp" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TraderID" type="xs:long" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Request" nillable="true" type="tns:Request" />
+  <xs:complexType name="Status">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ServiceRequests" nillable="true" type="tns:ArrayOfServiceRequest" />
+      <xs:element minOccurs="0" name="StatusID" type="xs:short" />
+      <xs:element minOccurs="0" name="StatusName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Transactions" nillable="true" type="tns:ArrayOfTransaction" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Status" nillable="true" type="tns:Status" />
+  <xs:complexType name="ArrayOfServiceRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ServiceRequest" nillable="true" type="tns:ServiceRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfServiceRequest" nillable="true" type="tns:ArrayOfServiceRequest" />
+  <xs:complexType name="ServiceRequest">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="ServiceRequest" nillable="true" type="tns:ServiceRequest" />
+  <xs:complexType name="ArrayOfTransaction">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Transaction" nillable="true" type="tns:Transaction" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTransaction" nillable="true" type="tns:ArrayOfTransaction" />
+  <xs:complexType name="Transaction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BlockID" type="xs:long" />
+      <xs:element minOccurs="0" name="QtyAllocated" type="xs:long" />
+      <xs:element minOccurs="0" name="QtyRequested" type="xs:long" />
+      <xs:element minOccurs="0" name="Side" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="tns:Status" />
+      <xs:element minOccurs="0" name="StatusID" type="xs:short" />
+      <xs:element minOccurs="0" name="StockData" nillable="true" type="tns:StockData" />
+      <xs:element minOccurs="0" name="Symbol" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TimeStamp" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TraderID" type="xs:long" />
+      <xs:element minOccurs="0" name="TransactionID" type="xs:long" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Transaction" nillable="true" type="tns:Transaction" />
+  <xs:complexType name="StockData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="MarketPrice" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="QuantityAvailable" type="xs:long" />
+      <xs:element minOccurs="0" name="ServiceRequests" nillable="true" type="tns:ArrayOfServiceRequest" />
+      <xs:element minOccurs="0" name="Symbol" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Transactions" nillable="true" type="tns:ArrayOfTransaction" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StockData" nillable="true" type="tns:StockData" />
+  <xs:complexType name="Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BlockID" type="xs:long" />
+      <xs:element minOccurs="0" name="QtyAllocated" type="xs:long" />
+      <xs:element minOccurs="0" name="QtyRequested" type="xs:long" />
+      <xs:element minOccurs="0" name="RequestID" type="xs:int" />
+      <xs:element minOccurs="0" name="Side" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="tns:Status" />
+      <xs:element minOccurs="0" name="StatusID" type="xs:short" />
+      <xs:element minOccurs="0" name="StockData" nillable="true" type="tns:StockData" />
+      <xs:element minOccurs="0" name="Symbol" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TimeStamp" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TraderID" type="xs:long" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Response" nillable="true" type="tns:Response" />
+</xs:schema>

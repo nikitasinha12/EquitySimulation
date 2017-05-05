@@ -1,0 +1,90 @@
+﻿@model ExternalAdminModule.ServiceRequest
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ServiceRequest</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BlockID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlockID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TraderID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TraderID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QtyRequested)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QtyRequested)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QtyAllocated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QtyAllocated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Side)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Side)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeStamp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status.StatusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status.StatusName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StockData.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StockData.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RequestID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,128 @@
+﻿<Window x:Class="Mock_Project.PM_Views.CreateOrder"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Project="clr-namespace:Mock_Project"
+        xmlns:Converter="clr-namespace:Mock_Project.PM_Converters"
+        Title="CreateOrder" Height="850" Width="1440" WindowState="Maximized"
+        xmlns:validations="clr-namespace:Mock_Project.PM_Validations"
+        xmlns:viewmodel="clr-namespace:Mock_Project.PM_ViewModels">
+    <Window.Resources>
+        <viewmodel:CreateOrderViewModel x:Key="CreateOrderViewModel"></viewmodel:CreateOrderViewModel>
+        <Converter:SymbolNameToIDConveter x:Key="SymbolNameToIDConveter"></Converter:SymbolNameToIDConveter>
+        <ControlTemplate x:Key="validationErrorTemplate">
+            <DockPanel>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                    <Grid Width="12" Height="12">
+                        <Ellipse Width="12" Height="12" Fill="Red" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Foreground="White" FontWeight="Heavy" FontSize="8" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" 
+                                   ToolTip="{Binding ElementName=ErrorAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">X</TextBlock>
+                    </Grid>
+                    <TextBlock Foreground="Red" FontWeight="12" Margin="2,0,0,0" Text="{Binding ElementName=ErrorAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"
+
+                   ></TextBlock>
+                </StackPanel>
+                <AdornedElementPlaceholder x:Name="ErrorAdorner" ></AdornedElementPlaceholder>
+            </DockPanel>
+        </ControlTemplate>
+        <Converter:PorfolioNameToIDCoverter x:Key="PorfolioNameToIDCoverter"></Converter:PorfolioNameToIDCoverter>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource CreateOrderViewModel}">
+        <StackPanel >
+            <Project:HeaderUserControl></Project:HeaderUserControl>
+            <StackPanel Orientation="Horizontal" Margin="20,40,0,0">
+                <Label Content="Create Order" FontWeight="Bold" FontSize="20"></Label>
+                <ComboBox x:Name="TraderBox" Width="994" Margin="80,0,0,0" IsEditable="True" IsReadOnly="True" Text="---------------------------------------------Trader-------------------------------------------------------------------------------------------------" FontSize="20"/>
+            </StackPanel>
+            <Rectangle HorizontalAlignment="Stretch" Fill="Black" Height="4" Margin="0,20,0,0"/>
+            <Grid Margin="115,50,50,50" Height="325">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="608*"/>
+                    <ColumnDefinition Width="659*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel HorizontalAlignment="Left" Height="358" Margin="10,10,0,-43" VerticalAlignment="Top" Width="588">
+                    <StackPanel Orientation="Horizontal" Margin="0,10">
+                        <Label Content="Symbol : " FontSize="20" Width="157"/>
+                        <ComboBox x:Name="cbxSymbolList" Width="338" Margin="40,0,0,0" IsEditable="True" IsReadOnly="True" Text="-------------------Select Symbol----------------" SelectedValue="{Binding Path=order.SymbolID,Converter={StaticResource SymbolNameToIDConveter},Mode=OneWayToSource}" FontSize="16" SelectionChanged="cbxSymbolList_SelectionChanged" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0">
+                        <Label Content="Side : " FontSize="20" Width="160"/>
+                        <RadioButton x:Name="rbtnBuy" FontSize="16" GroupName="SideRadioButton" VerticalAlignment="Center" Margin="70,0,0,0" Content="BUY" IsChecked="True"/>
+                        <RadioButton x:Name="rbtnSell"  FontSize="16" GroupName="SideRadioButton" VerticalAlignment="Center" Margin="70,0,0,0" Content="SELL"/>
+                    </StackPanel>
+                    <Separator></Separator>
+                    <StackPanel Orientation="Horizontal" Margin="0">
+                        <Label Content="Order Qualifier : " FontSize="20" Width="160"/>
+                        <RadioButton x:Name="rbtnGTD"  FontSize="16" GroupName="QualifierRadioButton" VerticalAlignment="Center" Margin="70,0,0,0" Content="GTD" IsChecked="True"/>
+                        <RadioButton x:Name="rbtnGTC" FontSize="16" GroupName="QualifierRadioButton" VerticalAlignment="Center" Margin="70,0,0,0" Content="GTC"/>
+                    </StackPanel>
+                    <Separator></Separator>
+                    <StackPanel Orientation="Horizontal" Margin="0">
+                        <Label Content="Type : " FontSize="20" Width="160" Height="38" VerticalAlignment="Top"/>
+                        <StackPanel x:Name="RadioButtonPanel">
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton x:Name="rbtnStopOrder" FontSize="16" Width="100" GroupName="TypeRadioButton" VerticalAlignment="Center" Margin="70,0,0,0" Content="Stop Order"  Checked="rbtnStopOrder_Checked"/>
+                                <RadioButton x:Name="rbtnMktOrder" FontSize="16" Width="120" GroupName="TypeRadioButton" VerticalAlignment="Center" Margin="70,0,0,0" Content="Market Order" Checked="rbtnMktOrder_Checked"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton x:Name="rbtnLimitOrder" FontSize="16" Width="100" GroupName="TypeRadioButton" VerticalAlignment="Center" Margin="70,0,0,0" Content="Limit Order" Checked="rbtnLimitOrder_Checked"/>
+                                <RadioButton x:Name="rbtnStopLimitOrder" FontSize="16" Width="148" GroupName="TypeRadioButton" VerticalAlignment="Center" Margin="70,0,0,0" Content="Stop Limit Order" Checked="rbtnStopLimitOrder_Checked"/>
+                            </StackPanel>
+                            <StackPanel x:Name="lblVisibilityPrices" Orientation="Horizontal">
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="40,0">
+                                        <Label x:Name="lblStopPrice" Content="Stop Price" Width="150" />
+                                        <Label x:Name="lblLimitPrice" Content="Limit Price" Width="150" Margin="40,0"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="40,0">
+                                        <TextBox x:Name="txtStopPrice" Text="{Binding Path=order.StopPrice,Mode=OneWayToSource}" PreviewTextInput="NumberValidationTextBox" Width="150"/>
+                                        <TextBox x:Name="txtLimitPrice" Text="{Binding Path=order.LimitPrice,Mode=OneWayToSource}" PreviewTextInput="NumberValidationTextBox" Width="150" Margin="40,0"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,10">
+                        <Label Content="Portfolio : " FontSize="20" Width="160"/>
+                        <ComboBox x:Name="Portfoliobox" Width="338" Margin="40,0,0,0" IsEditable="True" IsReadOnly="True" Text="-----------------Select Portfolio--------------------" SelectedValue="{Binding Path=order.PortfolioID,Converter={StaticResource PorfolioNameToIDCoverter} ,Mode=OneWayToSource}" FontSize="16"  />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,10">
+                        <Label Content="Quantity : " FontSize="20" Width="160"/>
+                        <TextBox Height="30" Margin="40,0,0,0" Validation.ErrorTemplate="{StaticResource validationErrorTemplate}" PreviewTextInput="NumberValidationTextBox" TextWrapping="Wrap" Width="338" FontSize="16">
+                            <Binding Path="order.TotalQty" Mode="OneWayToSource" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <validations:PriceRule></validations:PriceRule>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox>
+
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="1" HorizontalAlignment="Left" Height="305" Margin="10,10,0,0" VerticalAlignment="Top" Width="639">
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <Label Content="Security Name : " FontSize="20" Width="160"/>
+                        <Label x:Name="lblSecurityName" Content="securityname" Width="444" FontSize="16" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <Label Content="Market Price: " FontSize="20" Width="160"/>
+                        <Label x:Name="lblMarketPrice" Content="{Binding Path=order.MarketPrice,Mode=OneWayToSource}" Width="444" FontSize="16" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Save Notes: " FontSize="20" Width="160" Margin="10"/>
+                        <RichTextBox x:Name="richText" Height="100" Width="324" Margin="0,15,0,0">
+                            <FlowDocument>
+                                <Paragraph>
+                                    <Run Text="Notes"/>
+                                </Paragraph>
+                            </FlowDocument>
+                        </RichTextBox>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+            <Button Content="Create Order" Width="192" FontSize="20" Margin="618,0,622,0" HorizontalAlignment="Center" Background="Black" Foreground="White" FontWeight="Bold" Height="51" Command="{Binding Path=CreateOrderDelegate}" CommandParameter="{Binding Path=order}" Click="Create_Order"/>
+            <Label Content="" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" Foreground="Red"></Label>
+        </StackPanel>
+        
+        <Project:FooterUserControl VerticalAlignment="Bottom" Height="60"></Project:FooterUserControl>
+    </Grid>
+</Window>

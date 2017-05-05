@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://10.207.61.96/ExchangeSystem/MarketDataService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ExchangeSystem" />
+  <xs:element name="GetWholeData">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWholeDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ExchangeSystem" minOccurs="0" name="GetWholeDataResult" nillable="true" type="q1:ArrayOfResponsePM" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSymbolData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="symbol" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSymbolDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ExchangeSystem" minOccurs="0" name="GetSymbolDataResult" nillable="true" type="q2:ResponsePM" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

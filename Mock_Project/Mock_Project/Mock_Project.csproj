@@ -1,0 +1,457 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{49960DC7-4106-4474-B05D-C0F59AC3E262}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mock_Project</RootNamespace>
+    <AssemblyName>Mock_Project</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Admin_Converter\CreateConverter.cs" />
+    <Compile Include="Admin_ViewModel\CreateUserViewModel.cs" />
+    <Compile Include="Admin_ViewModel\DashboardAdminViewModel.cs" />
+    <Compile Include="Admin_ViewModel\EditUserViewModel.cs" />
+    <Compile Include="Admin_Views\CreateUser.xaml.cs">
+      <DependentUpon>CreateUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Views\Dashboard_Admin.xaml.cs">
+      <DependentUpon>Dashboard_Admin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Views\EditUser.xaml.cs">
+      <DependentUpon>EditUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\UserTable.cs" />
+    <Compile Include="FooterUserControl.xaml.cs">
+      <DependentUpon>FooterUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ForgotPasswordPopup.xaml.cs">
+      <DependentUpon>ForgotPasswordPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Framework\ANotifyPropertyChanged.cs" />
+    <Compile Include="Commands\DelegateCommand.cs" />
+    <Compile Include="DataModel\Block.cs">
+      <DependentUpon>EquityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Block_status.cs">
+      <DependentUpon>EquityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\EquityDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquityDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\EquityDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\EquityDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EquityDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Order.cs">
+      <DependentUpon>EquityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Order_Status.cs">
+      <DependentUpon>EquityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Order_Type.cs">
+      <DependentUpon>EquityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Portfolio.cs">
+      <DependentUpon>EquityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Role.cs">
+      <DependentUpon>EquityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>EquityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\sp_helpdiagrams_Result.cs">
+      <DependentUpon>EquityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Symbol_Properties.cs">
+      <DependentUpon>EquityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\sysdiagram.cs">
+      <DependentUpon>EquityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\User.cs">
+      <DependentUpon>EquityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\User_Role.cs">
+      <DependentUpon>EquityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Framework\VisualTreeHelpers.cs" />
+    <Compile Include="HeaderUserControl.xaml.cs">
+      <DependentUpon>HeaderUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Login_Model\Login.cs" />
+    <Compile Include="Login_ViewModel\LoginViewModel.cs" />
+    <Compile Include="Login_ViewModel\SelectPageViewModel.cs" />
+    <Compile Include="MapperModels\CheckedBlock.cs" />
+    <Compile Include="MapperModels\CheckedOpenOrder.cs" />
+    <Compile Include="Mapper\BlockDbToExchangeMapper.cs" />
+    <Compile Include="Mapper\BlockToCheckedBlockMapper.cs" />
+    <Compile Include="Mapper\CheckedOpenOrderToOrderMapper.cs" />
+    <Compile Include="PM_Converters\PorfolioNameToIDCoverter.cs" />
+    <Compile Include="PM_Converters\SymbolNameToIDConveter.cs" />
+    <Compile Include="PM_Validations\MandatoryRule.cs" />
+    <Compile Include="PM_Validations\PriceRule.cs" />
+    <Compile Include="PM_ViewModels\CheckSavedOrder.cs" />
+    <Compile Include="PM_ViewModels\CreateOrderViewModel.cs" />
+    <Compile Include="PM_ViewModels\CreatePortfolioViewModel.cs" />
+    <Compile Include="PM_ViewModels\EditSavedOrder.cs" />
+    <Compile Include="PM_ViewModels\OrderHistoryViewModel.cs" />
+    <Compile Include="PM_ViewModels\OrdersViewModel.cs" />
+    <Compile Include="PM_ViewModels\SaveViewModel.cs" />
+    <Compile Include="PM_Views\AmendEquityOrder.xaml.cs">
+      <DependentUpon>AmendEquityOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PM_Views\CreateOrder.xaml.cs">
+      <DependentUpon>CreateOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PM_Views\CreatePortfolio.xaml.cs">
+      <DependentUpon>CreatePortfolio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PM_Views\Dashboard.xaml.cs">
+      <DependentUpon>Dashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PM_Views\EditSavedOrder.xaml.cs">
+      <DependentUpon>EditSavedOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PM_Views\OrderHistory.xaml.cs">
+      <DependentUpon>OrderHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PM_Views\PendingOrders.xaml.cs">
+      <DependentUpon>PendingOrders.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PM_Views\SavedOrders.xaml.cs">
+      <DependentUpon>SavedOrders.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SelectPage.xaml.cs">
+      <DependentUpon>SelectPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\MarketDataService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ServiceReference1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Services\DialogService.cs" />
+    <Compile Include="Services\SymbolDataRetriveService.cs" />
+    <Compile Include="Session.cs" />
+    <Compile Include="Shared_Models\HeaderModel.cs" />
+    <Compile Include="Shared_ViewModel\BaseViewModel.cs" />
+    <Compile Include="Shared_ViewModel\HeaderViewModel.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Shared_ViewModel\PM_ForgotPasswordViewModel.cs" />
+    <Compile Include="Traders\Cancel Blocks\CancelBlockVM.cs" />
+    <Compile Include="Traders\IndividualBlock.cs" />
+    <Compile Include="Traders\IndividualOrder.cs" />
+    <Compile Include="Traders\Models\ProposedBlockHelper.cs" />
+    <Compile Include="Traders\Models\TypeSymbolSideCombo.cs" />
+    <Compile Include="Traders\TraderDashboard\TraderDashboardVM.cs" />
+    <Compile Include="Traders\Cancel Blocks\CancelBlockWindow.xaml.cs">
+      <DependentUpon>CancelBlockWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Traders\TraderDashboard\Conveter.cs" />
+    <Compile Include="Traders\Edit Blocks\Edit_Block_Order.xaml.cs">
+      <DependentUpon>Edit_Block_Order.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Traders\TraderDashboard\TraderDashboard.xaml.cs">
+      <DependentUpon>TraderDashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Traders\Edit Blocks\TraderEditVM.cs" />
+    <Compile Include="Traders\View Blocks\ViewBlocksWindow.xaml.cs">
+      <DependentUpon>ViewBlocksWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Traders\View Blocks\ViewBlockVM.cs" />
+    <Page Include="Admin_Views\CreateUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin_Views\Dashboard_Admin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin_Views\EditUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FooterUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ForgotPasswordPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HeaderUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PM_Views\AmendEquityOrder.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PM_Views\CreateOrder.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PM_Views\CreatePortfolio.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PM_Views\Dashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PM_Views\EditSavedOrder.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PM_Views\OrderHistory.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PM_Views\PendingOrders.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PM_Views\SavedOrders.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SelectPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Traders\Cancel Blocks\CancelBlockWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Traders\Edit Blocks\Edit_Block_Order.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Traders\TraderDashboard\TraderDashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Traders\View Blocks\ViewBlocksWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="DataModel\EquityDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EquityDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DataModel\EquityDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EquityDataModel.edmx</DependentUpon>
+      <LastGenOutput>EquityDataModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="DataModel\EquityDataModel.edmx.diagram">
+      <DependentUpon>EquityDataModel.edmx</DependentUpon>
+    </None>
+    <None Include="DataModel\EquityDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EquityDataModel.edmx</DependentUpon>
+      <LastGenOutput>EquityDataModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Service References\MarketDataService\MarketDataService.wsdl" />
+    <None Include="Service References\MarketDataService\MarketDataService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MarketDataService\MarketDataService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MarketDataService\MarketDataService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MarketDataService\Mock_Project.MarketDataService.ResponsePM.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\Mock_Project.ServiceReference1.Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\TraderFillService.wsdl" />
+    <None Include="Service References\ServiceReference1\TraderFillService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\TraderFillService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\TraderFillService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Converter\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Footer.png" />
+    <Resource Include="Resources\Images\Header.png" />
+    <Resource Include="Resources\Images\logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\logoWhiteBg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\MarketDataService\" />
+    <WCFMetadataStorage Include="Service References\ServiceReference1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MarketDataService\MarketDataService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MarketDataService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MarketDataService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MarketDataService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference1\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Footer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Header.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\login-page-image.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

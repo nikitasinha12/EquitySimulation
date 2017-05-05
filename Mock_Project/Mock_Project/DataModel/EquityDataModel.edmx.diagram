@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3f92a50ba66946159d8f79eeb1c93c78" Name="Diagram1">
+        <EntityTypeShape EntityType="EquityModel.Block" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EquityModel.Block_status" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EquityModel.Order" Width="1.5" PointX="5.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EquityModel.Order_Status" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="EquityModel.Order_Type" Width="1.5" PointX="3" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="EquityModel.Portfolio" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EquityModel.Role" Width="1.5" PointX="3.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EquityModel.Symbol_Properties" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EquityModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EquityModel.User" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EquityModel.User_Role" Width="1.5" PointX="6" PointY="6.125" IsExpanded="true" />
+        <AssociationConnector Association="EquityModel.FK_Block_Block_status" ManuallyRouted="false" />
+        <AssociationConnector Association="EquityModel.FK_Block_Symbol_Properties" ManuallyRouted="false" />
+        <AssociationConnector Association="EquityModel.FK_Block_User" ManuallyRouted="false" />
+        <AssociationConnector Association="EquityModel.FK_Order_Block" ManuallyRouted="false" />
+        <AssociationConnector Association="EquityModel.FK_Order_Order_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="EquityModel.FK_Order_Order_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="EquityModel.FK_Order_Portfolio" ManuallyRouted="false" />
+        <AssociationConnector Association="EquityModel.FK_Order_Symbol_Properties" ManuallyRouted="false" />
+        <AssociationConnector Association="EquityModel.FK_Order_User" ManuallyRouted="false" />
+        <AssociationConnector Association="EquityModel.FK_Portfolio_User" ManuallyRouted="false" />
+        <AssociationConnector Association="EquityModel.FK_User_Role_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="EquityModel.FK_User_Role_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

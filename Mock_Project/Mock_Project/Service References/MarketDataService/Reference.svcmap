@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="114fd560-0da2-46a2-9320-56b52b7588e8" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://10.207.61.96/ExchangeSystem/MarketDataService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="MarketDataService.wsdl" MetadataType="Wsdl" ID="b0bc65bb-66fd-43fe-88f1-b5b6af3bda4a" SourceId="1" SourceUrl="http://10.207.61.96/ExchangeSystem/MarketDataService.svc?wsdl" />
+    <MetadataFile FileName="MarketDataService.xsd" MetadataType="Schema" ID="91326466-df60-4c63-9d05-b50446da7b70" SourceId="1" SourceUrl="http://10.207.61.96/ExchangeSystem/MarketDataService.svc?xsd=xsd0" />
+    <MetadataFile FileName="MarketDataService1.xsd" MetadataType="Schema" ID="e40a6525-6a33-4a17-ad20-201d18dd335a" SourceId="1" SourceUrl="http://10.207.61.96/ExchangeSystem/MarketDataService.svc?xsd=xsd2" />
+    <MetadataFile FileName="MarketDataService2.xsd" MetadataType="Schema" ID="e8ed9472-f61b-434b-a4ee-41cc984bc788" SourceId="1" SourceUrl="http://10.207.61.96/ExchangeSystem/MarketDataService.svc?xsd=xsd1" />
+    <MetadataFile FileName="MarketDataService.disco" MetadataType="Disco" ID="23872c3b-7cf1-4bcf-898d-ce91a462458d" SourceId="1" SourceUrl="http://10.207.61.96/ExchangeSystem/MarketDataService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,15 @@
+C:\Users\vkhan3\Desktop\DotNett\SurvivalProject\ExchangeSystem\TraderClientTest\bin\Debug\TraderClientTest.exe.config
+C:\Users\vkhan3\Desktop\DotNett\SurvivalProject\ExchangeSystem\TraderClientTest\bin\Debug\TraderClientTest.exe
+C:\Users\vkhan3\Desktop\DotNett\SurvivalProject\ExchangeSystem\TraderClientTest\bin\Debug\TraderClientTest.pdb
+C:\Users\vkhan3\Desktop\DotNett\SurvivalProject\ExchangeSystem\TraderClientTest\obj\Debug\TraderClientTest.exe
+C:\Users\vkhan3\Desktop\DotNett\SurvivalProject\ExchangeSystem\TraderClientTest\obj\Debug\TraderClientTest.pdb
+\\dluqalab0008\Users\vkhan3\Desktop\DotNett\SurvivalProject\ExchangeSystem\TraderClientTest\bin\Debug\TraderClientTest.exe.config
+\\dluqalab0008\Users\vkhan3\Desktop\DotNett\SurvivalProject\ExchangeSystem\TraderClientTest\bin\Debug\TraderClientTest.exe
+\\dluqalab0008\Users\vkhan3\Desktop\DotNett\SurvivalProject\ExchangeSystem\TraderClientTest\bin\Debug\TraderClientTest.pdb
+\\dluqalab0008\Users\vkhan3\Desktop\DotNett\SurvivalProject\ExchangeSystem\TraderClientTest\obj\Debug\TraderClientTest.exe
+\\dluqalab0008\Users\vkhan3\Desktop\DotNett\SurvivalProject\ExchangeSystem\TraderClientTest\obj\Debug\TraderClientTest.pdb
+D:\MockProject\GMIGGN\MockProject\trunk\Code\MockProject_External\TraderClientTest\bin\Debug\TraderClientTest.exe.config
+D:\MockProject\GMIGGN\MockProject\trunk\Code\MockProject_External\TraderClientTest\bin\Debug\TraderClientTest.exe
+D:\MockProject\GMIGGN\MockProject\trunk\Code\MockProject_External\TraderClientTest\bin\Debug\TraderClientTest.pdb
+D:\MockProject\GMIGGN\MockProject\trunk\Code\MockProject_External\TraderClientTest\obj\Debug\TraderClientTest.exe
+D:\MockProject\GMIGGN\MockProject\trunk\Code\MockProject_External\TraderClientTest\obj\Debug\TraderClientTest.pdb

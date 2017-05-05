@@ -1,0 +1,65 @@
+﻿@model ExternalAdminModule.Transaction
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+    <h4>Transaction</h4>
+    <hr />
+ <div class="container">
+     <table class="table table-striped">
+         <thead>
+             <tr>
+                 <th>
+                     Transaction Details
+                 </th>
+             </tr>
+         </thead>
+         <tbody>
+             <tr>
+                 <td>@Html.DisplayNameFor(model => model.BlockID)</td>
+                 <td>@Html.DisplayFor(model => model.BlockID)</td>
+             </tr>
+             <tr>
+                 <td>@Html.DisplayNameFor(model => model.TraderID)</td>
+                 <td>@Html.DisplayFor(model => model.TraderID)</td>
+             </tr>
+             <tr>
+                 <td>@Html.DisplayNameFor(model => model.QtyRequested)</td>
+                 <td>@Html.DisplayFor(model => model.QtyRequested)</td>
+             </tr>
+             <tr>
+                 <td>@Html.DisplayNameFor(model => model.QtyAllocated)</td>
+                 <td>@Html.DisplayFor(model => model.QtyAllocated)</td>
+             </tr>
+             <tr>
+                 <td>@Html.DisplayNameFor(model => model.Type)</td>
+                 <td>@Html.DisplayFor(model => model.Type)</td>
+             </tr>
+             <tr>
+                 <td>@Html.DisplayNameFor(model => model.Side)</td>
+                 <td>@Html.DisplayFor(model => model.Side)</td>
+             </tr>
+             <tr>
+                 <td>@Html.DisplayNameFor(model => model.TimeStamp)</td>
+                 <td>@Html.DisplayFor(model => model.TimeStamp)</td>
+             </tr>
+             <tr>
+                 <td>@Html.DisplayNameFor(model => model.Status.StatusName)</td>
+                 <td>@Html.DisplayFor(model => model.Status.StatusName)</td>
+             </tr>
+             <tr>
+                 <td>@Html.DisplayNameFor(model => model.StockData.Name)</td>
+                 <td>@Html.DisplayFor(model => model.StockData.Name)</td>
+             </tr>
+         </tbody>
+     </table>
+ </div>
+         
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TransactionID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
