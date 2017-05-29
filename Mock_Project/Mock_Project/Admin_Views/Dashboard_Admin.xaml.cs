@@ -27,10 +27,10 @@ namespace Mock_Project.Admin_Views
             InitializeComponent();
             this.MouseEnter += Dashboard_Admin_MouseEnter;
             db = new EquityEntities();
-            this.Closed += Dashboard_Admin_Closed;
+            this.Closing += Dashboard_Admin_Closing;
         }
 
-        void Dashboard_Admin_Closed(object sender, EventArgs e)
+        void Dashboard_Admin_Closing(object sender, EventArgs e)
         {
             if (App.Current.MainWindow.Title.Equals("Dashboard_Admin"))
                 App.Current.Shutdown();

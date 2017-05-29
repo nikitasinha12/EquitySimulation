@@ -30,11 +30,11 @@ namespace Mock_Project
             btnPM.Background = Brushes.White;
             btnAdmin.IsEnabled = false;
             btnPM.Background = Brushes.White;
-            this.Closed += SelectPage_Closed;
+            this.Closing += SelectPage_Closing;
             
         }
 
-        void SelectPage_Closed(object sender, EventArgs e)
+        void SelectPage_Closing(object sender, EventArgs e)
         {
             if (App.Current.MainWindow.Title.Equals("SelectPage"))
                 App.Current.Shutdown();

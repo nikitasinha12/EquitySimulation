@@ -22,10 +22,10 @@ namespace Mock_Project.PM_Views
         public Dashboard()
         {
             InitializeComponent();
-            this.Closed += Dashboard_Closed;
+            this.Closing += Dashboard_Closing;
         }
 
-        void Dashboard_Closed(object sender, EventArgs e)
+        void Dashboard_Closing(object sender, EventArgs e)
         {
             if (App.Current.MainWindow.Title.Equals("Dashboard"))
                 App.Current.Shutdown();
