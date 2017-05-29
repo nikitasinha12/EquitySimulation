@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="Internal_System.PM_Views.OrderHistory"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             xmlns:ViewModel="clr-namespace:Internal_System.PM_ViewModels"
+             d:DesignHeight="300" Width="816">
+    <UserControl.Resources>
+        <ViewModel:OrderHistoryViewModel x:Key="OrderHistoryViewModel"></ViewModel:OrderHistoryViewModel>
+    </UserControl.Resources>
+    <StackPanel DataContext="{StaticResource OrderHistoryViewModel}">
+        <DataGrid x:Name="grdHistory" AutoGenerateColumns="False" ItemsSource="{Binding Path=OrdersList}" IsReadOnly="True">
+            <DataGrid.Columns >
+                <DataGridTextColumn Binding="{Binding Symbol_Properties.Name}" Header="Symbol"/>
+                <DataGridTextColumn Binding="{Binding Side}" Header="Side"/>
+                <DataGridTextColumn Binding="{Binding Order_Status.StatusName}" Header="Status"/>
+                <DataGridTextColumn Binding="{Binding Order_Type.OrderTypeName}" Header="Order Type"/>
+                <DataGridTextColumn Binding="{Binding MarketPrice}" Header="Market Price"/>
+                <DataGridTextColumn Binding="{Binding LimitPrice}" Header="Limit Price"/>
+                <DataGridTextColumn Binding="{Binding StopPrice}" Header="Stop Price"/>
+                <DataGridTextColumn Binding="{Binding AllocatedQty}" Header="Allocated Quantity"/>
+                <DataGridTextColumn Binding="{Binding TotalQty}" Header="Total Quantity"/>
+                <DataGridTextColumn Binding="{Binding ExpiryDate}" Header="Expiry Date"/>
+                <DataGridTextColumn Binding="{Binding CreationDate}" Header="Create Date"/>
+                <DataGridTextColumn Binding="{Binding UpdationDate}" Header="Update Date"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</UserControl>

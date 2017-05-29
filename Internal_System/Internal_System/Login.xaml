@@ -1,0 +1,88 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ViewModel="clr-namespace:Internal_System.Login_ViewModel" xmlns:local="clr-namespace:Internal_System" 
+        xmlns:converter="clr-namespace:Internal_System.Admin_Converter"
+        x:Class="Internal_System.Login"
+        Title="Login Screen" Height="900" Width="1440" WindowState="Maximized">
+    <Window.Resources>
+        <ViewModel:LoginViewModel x:Key="LoginViewModel"/>
+        <converter:CreateConverter x:Key="CreateConverter"/>
+    </Window.Resources>
+    <StackPanel Orientation="Vertical" VerticalAlignment="Center" >
+        <local:HeaderUserControl />
+        <Grid Height="600">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="707*"/>
+                <ColumnDefinition Width="725*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="2">
+                <StackPanel VerticalAlignment="Center" Height="123" Margin="0,30,0,0">
+                    <Label FontWeight="Bold" FontSize="74" Content="Login"  HorizontalContentAlignment="Center" Height="204"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Grid.ColumnSpan="2">
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                        <StackPanel VerticalAlignment="Center" DataContext="{DynamicResource LoginViewModel}">
+                            <StackPanel Height="100" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0" Width="705">
+                                <Label Width="175" Content="Username:" VerticalAlignment="Center" FontSize="32" HorizontalAlignment="Right" Margin="0,24"/>
+                                <TextBox x:Name="UserName" Text="{Binding Credentials.UserName}" Width="475" 
+            						VerticalAlignment="Center" FontSize="32" HorizontalAlignment="Left" Margin="0,26"/>
+                            </StackPanel>
+                            <StackPanel Height="100" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" Width="715">
+                                <Label Width="175" Content="Password:" VerticalAlignment="Center" FontSize="32" Margin="0,24"/>
+                                <PasswordBox x:Name="Password" Width="475" VerticalAlignment="Center" FontSize="32" Margin="0,28">
+                                    <PasswordBox.InputBindings>
+                                        <KeyBinding Command="{Binding LoginCommand}" Key="Enter">
+                                            <KeyBinding.CommandParameter>
+                                                <MultiBinding Converter="{StaticResource CreateConverter}">
+                                                    <Binding Path="Credentials"/>
+                                                    <Binding ElementName="Password"/>
+                                                </MultiBinding>
+                                            </KeyBinding.CommandParameter>
+                                        </KeyBinding>
+                                    </PasswordBox.InputBindings>
+                                </PasswordBox>
+                                <!--<TextBox x:Name="Password" FontFamily="Wingdings" Text="{Binding Credentials.Password}" Width="900" VerticalAlignment="Center" FontSize="32"/>-->
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock Height="23" HorizontalAlignment="Center" x:Name ="errormessage" VerticalAlignment="Top" Width="247"  OpacityMask="Crimson" Foreground="#FFE5572C"  />
+                            </StackPanel>
+                            <StackPanel Height="100" Orientation="Vertical">
+                                <Button Content="Login" FontSize="32" Width="400" VerticalAlignment="Center" Command="{Binding LoginCommand}">
+                                    <Button.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource CreateConverter}">
+                                            <Binding Path="Credentials"/>
+                                            <Binding ElementName="Password"/>
+                                        </MultiBinding>
+                                    </Button.CommandParameter>
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}"  BasedOn="{StaticResource {x:Type Button}}">
+                                            <Setter Property="IsEnabled" Value="false" />
+                                            <Style.Triggers>
+                                                <MultiDataTrigger>
+                                                    <MultiDataTrigger.Conditions>
+                                                        <Condition Binding="{Binding (Validation.HasError), ElementName=UserName}" Value="false" />
+
+                                                    </MultiDataTrigger.Conditions>
+                                                    <Setter Property="IsEnabled" Value="true" />
+                                                </MultiDataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                                <Label Content="{Binding ErrorMessage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" Foreground="Red" Height="49" Width="725"/>
+                            </StackPanel>
+                            <Label />
+                            <Button Content="Forgot Password?" HorizontalAlignment="Center" FontSize="21" Foreground="Blue" Click="Button_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel DataContext="{StaticResource LoginViewModel}">
+                <Image HorizontalAlignment="Left" Height="580" Margin="10,10,0,0" VerticalAlignment="Top" Width="638" Source="{Binding Path=loginImage}"/>
+            </StackPanel>            
+        </Grid>
+        <local:FooterUserControl Height="170"/>
+    </StackPanel>
+</Window>
+
