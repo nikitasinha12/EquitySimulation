@@ -4,8 +4,8 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="ServiceRequest">
+      <Schema Namespace="Exchange.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ServiceRequests">
           <Key>
             <PropertyRef Name="RequestID" />
           </Key>
@@ -18,16 +18,16 @@
           <Property Name="Type" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="Side" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="StatusID" Type="smallint" Nullable="false" />
-          <Property Name="TimeStamp" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="TimeStamp" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Status">
           <Key>
             <PropertyRef Name="StatusID" />
           </Key>
-          <Property Name="StatusID" Type="smallint" Nullable="false" />
+          <Property Name="StatusID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="StatusName" Type="varchar" MaxLength="15" Nullable="false" />
         </EntityType>
-        <EntityType Name="StockData">
+        <EntityType Name="StockDatas">
           <Key>
             <PropertyRef Name="Symbol" />
           </Key>
@@ -50,7 +50,7 @@
           <Property Name="Type" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="Side" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="StatusID" Type="smallint" Nullable="false" />
-          <Property Name="TimeStamp" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="TimeStamp" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -60,28 +60,28 @@
           <Property Name="UserName" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="CreateDate" Type="date" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
         </EntityType>
         <Association Name="FK_ServiceRequest_Status">
           <End Role="Status" Type="Self.Status" Multiplicity="1" />
-          <End Role="ServiceRequest" Type="Self.ServiceRequest" Multiplicity="*" />
+          <End Role="ServiceRequests" Type="Self.ServiceRequests" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Status">
               <PropertyRef Name="StatusID" />
             </Principal>
-            <Dependent Role="ServiceRequest">
+            <Dependent Role="ServiceRequests">
               <PropertyRef Name="StatusID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ServiceRequest_StockData">
-          <End Role="StockData" Type="Self.StockData" Multiplicity="1" />
-          <End Role="ServiceRequest" Type="Self.ServiceRequest" Multiplicity="*" />
+          <End Role="StockDatas" Type="Self.StockDatas" Multiplicity="1" />
+          <End Role="ServiceRequests" Type="Self.ServiceRequests" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="StockData">
+            <Principal Role="StockDatas">
               <PropertyRef Name="Symbol" />
             </Principal>
-            <Dependent Role="ServiceRequest">
+            <Dependent Role="ServiceRequests">
               <PropertyRef Name="Symbol" />
             </Dependent>
           </ReferentialConstraint>
@@ -99,10 +99,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Transactions_StockData">
-          <End Role="StockData" Type="Self.StockData" Multiplicity="1" />
+          <End Role="StockDatas" Type="Self.StockDatas" Multiplicity="1" />
           <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="StockData">
+            <Principal Role="StockDatas">
               <PropertyRef Name="Symbol" />
             </Principal>
             <Dependent Role="Transactions">
@@ -110,26 +110,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ModelStoreContainer">
-          <EntitySet Name="ServiceRequest" EntityType="Self.ServiceRequest" Schema="dbo" store:Type="Tables" />
+        <EntityContainer Name="ExchangeStoreContainer">
+          <EntitySet Name="ServiceRequests" EntityType="Self.ServiceRequests" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="StockData" EntityType="Self.StockData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StockDatas" EntityType="Self.StockDatas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Transactions" EntityType="Self.Transactions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_ServiceRequest_Status" Association="Self.FK_ServiceRequest_Status">
             <End Role="Status" EntitySet="Status" />
-            <End Role="ServiceRequest" EntitySet="ServiceRequest" />
+            <End Role="ServiceRequests" EntitySet="ServiceRequests" />
           </AssociationSet>
           <AssociationSet Name="FK_ServiceRequest_StockData" Association="Self.FK_ServiceRequest_StockData">
-            <End Role="StockData" EntitySet="StockData" />
-            <End Role="ServiceRequest" EntitySet="ServiceRequest" />
+            <End Role="StockDatas" EntitySet="StockDatas" />
+            <End Role="ServiceRequests" EntitySet="ServiceRequests" />
           </AssociationSet>
           <AssociationSet Name="FK_Transactions_Status" Association="Self.FK_Transactions_Status">
             <End Role="Status" EntitySet="Status" />
             <End Role="Transactions" EntitySet="Transactions" />
           </AssociationSet>
           <AssociationSet Name="FK_Transactions_StockData" Association="Self.FK_Transactions_StockData">
-            <End Role="StockData" EntitySet="StockData" />
+            <End Role="StockDatas" EntitySet="StockDatas" />
             <End Role="Transactions" EntitySet="Transactions" />
           </AssociationSet>
         </EntityContainer>
@@ -137,7 +137,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Exchange" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="ServiceRequest">
           <Key>
             <PropertyRef Name="RequestID" />
@@ -151,17 +151,17 @@
           <Property Name="Type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Side" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="StatusID" Type="Int16" Nullable="false" />
-          <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="7" />
-          <NavigationProperty Name="Status" Relationship="Self.FK_ServiceRequest_Status" FromRole="ServiceRequest" ToRole="Status" />
-          <NavigationProperty Name="StockData" Relationship="Self.FK_ServiceRequest_StockData" FromRole="ServiceRequest" ToRole="StockData" />
+          <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_ServiceRequest_Status" FromRole="ServiceRequests" ToRole="Status" />
+          <NavigationProperty Name="StockData" Relationship="Self.FK_ServiceRequest_StockData" FromRole="ServiceRequests" ToRole="StockDatas" />
         </EntityType>
         <EntityType Name="Status">
           <Key>
             <PropertyRef Name="StatusID" />
           </Key>
-          <Property Name="StatusID" Type="Int16" Nullable="false" />
+          <Property Name="StatusID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StatusName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="ServiceRequests" Relationship="Self.FK_ServiceRequest_Status" FromRole="Status" ToRole="ServiceRequest" />
+          <NavigationProperty Name="ServiceRequests" Relationship="Self.FK_ServiceRequest_Status" FromRole="Status" ToRole="ServiceRequests" />
           <NavigationProperty Name="Transactions" Relationship="Self.FK_Transactions_Status" FromRole="Status" ToRole="Transactions" />
         </EntityType>
         <EntityType Name="StockData">
@@ -173,8 +173,8 @@
           <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="QuantityAvailable" Type="Int64" Nullable="false" />
           <Property Name="MarketPrice" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ServiceRequests" Relationship="Self.FK_ServiceRequest_StockData" FromRole="StockData" ToRole="ServiceRequest" />
-          <NavigationProperty Name="Transactions" Relationship="Self.FK_Transactions_StockData" FromRole="StockData" ToRole="Transactions" />
+          <NavigationProperty Name="ServiceRequests" Relationship="Self.FK_ServiceRequest_StockData" FromRole="StockDatas" ToRole="ServiceRequests" />
+          <NavigationProperty Name="Transactions" Relationship="Self.FK_Transactions_StockData" FromRole="StockDatas" ToRole="Transactions" />
         </EntityType>
         <EntityType Name="Transaction">
           <Key>
@@ -189,9 +189,9 @@
           <Property Name="Type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Side" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="StatusID" Type="Int16" Nullable="false" />
-          <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Status" Relationship="Self.FK_Transactions_Status" FromRole="Transactions" ToRole="Status" />
-          <NavigationProperty Name="StockData" Relationship="Self.FK_Transactions_StockData" FromRole="Transactions" ToRole="StockData" />
+          <NavigationProperty Name="StockData" Relationship="Self.FK_Transactions_StockData" FromRole="Transactions" ToRole="StockDatas" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -201,28 +201,28 @@
           <Property Name="UserName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <Association Name="FK_ServiceRequest_Status">
           <End Role="Status" Type="Self.Status" Multiplicity="1" />
-          <End Role="ServiceRequest" Type="Self.ServiceRequest" Multiplicity="*" />
+          <End Role="ServiceRequests" Type="Self.ServiceRequest" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Status">
               <PropertyRef Name="StatusID" />
             </Principal>
-            <Dependent Role="ServiceRequest">
+            <Dependent Role="ServiceRequests">
               <PropertyRef Name="StatusID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ServiceRequest_StockData">
-          <End Role="StockData" Type="Self.StockData" Multiplicity="1" />
-          <End Role="ServiceRequest" Type="Self.ServiceRequest" Multiplicity="*" />
+          <End Role="StockDatas" Type="Self.StockData" Multiplicity="1" />
+          <End Role="ServiceRequests" Type="Self.ServiceRequest" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="StockData">
+            <Principal Role="StockDatas">
               <PropertyRef Name="Symbol" />
             </Principal>
-            <Dependent Role="ServiceRequest">
+            <Dependent Role="ServiceRequests">
               <PropertyRef Name="Symbol" />
             </Dependent>
           </ReferentialConstraint>
@@ -240,10 +240,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Transactions_StockData">
-          <End Role="StockData" Type="Self.StockData" Multiplicity="1" />
+          <End Role="StockDatas" Type="Self.StockData" Multiplicity="1" />
           <End Role="Transactions" Type="Self.Transaction" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="StockData">
+            <Principal Role="StockDatas">
               <PropertyRef Name="Symbol" />
             </Principal>
             <Dependent Role="Transactions">
@@ -259,18 +259,18 @@
           <EntitySet Name="Users" EntityType="Self.User" />
           <AssociationSet Name="FK_ServiceRequest_Status" Association="Self.FK_ServiceRequest_Status">
             <End Role="Status" EntitySet="Status" />
-            <End Role="ServiceRequest" EntitySet="ServiceRequests" />
+            <End Role="ServiceRequests" EntitySet="ServiceRequests" />
           </AssociationSet>
           <AssociationSet Name="FK_ServiceRequest_StockData" Association="Self.FK_ServiceRequest_StockData">
-            <End Role="StockData" EntitySet="StockDatas" />
-            <End Role="ServiceRequest" EntitySet="ServiceRequests" />
+            <End Role="StockDatas" EntitySet="StockDatas" />
+            <End Role="ServiceRequests" EntitySet="ServiceRequests" />
           </AssociationSet>
           <AssociationSet Name="FK_Transactions_Status" Association="Self.FK_Transactions_Status">
             <End Role="Status" EntitySet="Status" />
             <End Role="Transactions" EntitySet="Transactions" />
           </AssociationSet>
           <AssociationSet Name="FK_Transactions_StockData" Association="Self.FK_Transactions_StockData">
-            <End Role="StockData" EntitySet="StockDatas" />
+            <End Role="StockDatas" EntitySet="StockDatas" />
             <End Role="Transactions" EntitySet="Transactions" />
           </AssociationSet>
         </EntityContainer>
@@ -279,10 +279,10 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="External_DatabaseEntities">
+        <EntityContainerMapping StorageEntityContainer="ExchangeStoreContainer" CdmEntityContainer="External_DatabaseEntities">
           <EntitySetMapping Name="ServiceRequests">
-            <EntityTypeMapping TypeName="Model.ServiceRequest">
-              <MappingFragment StoreEntitySet="ServiceRequest">
+            <EntityTypeMapping TypeName="Exchange.ServiceRequest">
+              <MappingFragment StoreEntitySet="ServiceRequests">
                 <ScalarProperty Name="RequestID" ColumnName="RequestID" />
                 <ScalarProperty Name="BlockID" ColumnName="BlockID" />
                 <ScalarProperty Name="TraderID" ColumnName="TraderID" />
@@ -297,7 +297,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Status">
-            <EntityTypeMapping TypeName="Model.Status">
+            <EntityTypeMapping TypeName="Exchange.Status">
               <MappingFragment StoreEntitySet="Status">
                 <ScalarProperty Name="StatusID" ColumnName="StatusID" />
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
@@ -305,8 +305,8 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="StockDatas">
-            <EntityTypeMapping TypeName="Model.StockData">
-              <MappingFragment StoreEntitySet="StockData">
+            <EntityTypeMapping TypeName="Exchange.StockData">
+              <MappingFragment StoreEntitySet="StockDatas">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Symbol" ColumnName="Symbol" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -316,7 +316,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Transactions">
-            <EntityTypeMapping TypeName="Model.Transaction">
+            <EntityTypeMapping TypeName="Exchange.Transaction">
               <MappingFragment StoreEntitySet="Transactions">
                 <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
                 <ScalarProperty Name="BlockID" ColumnName="BlockID" />
@@ -332,7 +332,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="Model.User">
+            <EntityTypeMapping TypeName="Exchange.User">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />

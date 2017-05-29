@@ -7,8 +7,8 @@
     <ProjectGuid>{49960DC7-4106-4474-B05D-C0F59AC3E262}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Mock_Project</RootNamespace>
-    <AssemblyName>Mock_Project</AssemblyName>
+    <RootNamespace>Internal_System</RootNamespace>
+    <AssemblyName>Internal_System</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -359,6 +359,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\MarketDataService\Internal_System.MarketDataService.ResponsePM.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\MarketDataService\MarketDataService.wsdl" />
     <None Include="Service References\MarketDataService\MarketDataService.xsd">
       <SubType>Designer</SubType>
@@ -369,10 +372,7 @@
     <None Include="Service References\MarketDataService\MarketDataService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MarketDataService\Mock_Project.MarketDataService.ResponsePM.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ServiceReference1\Mock_Project.ServiceReference1.Response.datasource">
+    <None Include="Service References\ServiceReference1\Internal_System.ServiceReference1.Response.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ServiceReference1\TraderFillService.wsdl" />

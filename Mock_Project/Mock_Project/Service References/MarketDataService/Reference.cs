@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Mock_Project.MarketDataService {
+namespace Internal_System.MarketDataService {
     using System.Runtime.Serialization;
     using System;
     
@@ -95,25 +95,25 @@ namespace Mock_Project.MarketDataService {
     public interface IMarketDataService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketDataService/GetWholeData", ReplyAction="http://tempuri.org/IMarketDataService/GetWholeDataResponse")]
-        Mock_Project.MarketDataService.ResponsePM[] GetWholeData();
+        Internal_System.MarketDataService.ResponsePM[] GetWholeData();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketDataService/GetWholeData", ReplyAction="http://tempuri.org/IMarketDataService/GetWholeDataResponse")]
-        System.Threading.Tasks.Task<Mock_Project.MarketDataService.ResponsePM[]> GetWholeDataAsync();
+        System.Threading.Tasks.Task<Internal_System.MarketDataService.ResponsePM[]> GetWholeDataAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketDataService/GetSymbolData", ReplyAction="http://tempuri.org/IMarketDataService/GetSymbolDataResponse")]
-        Mock_Project.MarketDataService.ResponsePM GetSymbolData(string symbol);
+        Internal_System.MarketDataService.ResponsePM GetSymbolData(string symbol);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketDataService/GetSymbolData", ReplyAction="http://tempuri.org/IMarketDataService/GetSymbolDataResponse")]
-        System.Threading.Tasks.Task<Mock_Project.MarketDataService.ResponsePM> GetSymbolDataAsync(string symbol);
+        System.Threading.Tasks.Task<Internal_System.MarketDataService.ResponsePM> GetSymbolDataAsync(string symbol);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IMarketDataServiceChannel : Mock_Project.MarketDataService.IMarketDataService, System.ServiceModel.IClientChannel {
+    public interface IMarketDataServiceChannel : Internal_System.MarketDataService.IMarketDataService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class MarketDataServiceClient : System.ServiceModel.ClientBase<Mock_Project.MarketDataService.IMarketDataService>, Mock_Project.MarketDataService.IMarketDataService {
+    public partial class MarketDataServiceClient : System.ServiceModel.ClientBase<Internal_System.MarketDataService.IMarketDataService>, Internal_System.MarketDataService.IMarketDataService {
         
         public MarketDataServiceClient() {
         }
@@ -134,19 +134,19 @@ namespace Mock_Project.MarketDataService {
                 base(binding, remoteAddress) {
         }
         
-        public Mock_Project.MarketDataService.ResponsePM[] GetWholeData() {
+        public Internal_System.MarketDataService.ResponsePM[] GetWholeData() {
             return base.Channel.GetWholeData();
         }
         
-        public System.Threading.Tasks.Task<Mock_Project.MarketDataService.ResponsePM[]> GetWholeDataAsync() {
+        public System.Threading.Tasks.Task<Internal_System.MarketDataService.ResponsePM[]> GetWholeDataAsync() {
             return base.Channel.GetWholeDataAsync();
         }
         
-        public Mock_Project.MarketDataService.ResponsePM GetSymbolData(string symbol) {
+        public Internal_System.MarketDataService.ResponsePM GetSymbolData(string symbol) {
             return base.Channel.GetSymbolData(symbol);
         }
         
-        public System.Threading.Tasks.Task<Mock_Project.MarketDataService.ResponsePM> GetSymbolDataAsync(string symbol) {
+        public System.Threading.Tasks.Task<Internal_System.MarketDataService.ResponsePM> GetSymbolDataAsync(string symbol) {
             return base.Channel.GetSymbolDataAsync(symbol);
         }
     }

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Mock_Project.DataModel
+namespace Internal_System.DataModel
 {
     using System;
     using System.Data.Entity;

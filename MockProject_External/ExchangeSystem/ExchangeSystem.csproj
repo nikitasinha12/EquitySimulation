@@ -72,24 +72,24 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Exchange.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Exchange.edmx</DependentUpon>
+      <LastGenOutput>Exchange.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Exchange.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Exchange.edmx</DependentUpon>
+      <LastGenOutput>Exchange.cs</LastGenOutput>
+    </Content>
     <Content Include="MarketDataService.svc" />
     <Content Include="packages.config" />
     <EntityDeploy Include="Exchange.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Exchange.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Exchange.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Exchange.edmx</DependentUpon>
-      <LastGenOutput>Exchange.Context.cs</LastGenOutput>
-    </Content>
     <Content Include="Exchange.edmx.diagram">
       <DependentUpon>Exchange.edmx</DependentUpon>
-    </Content>
-    <Content Include="Exchange.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Exchange.edmx</DependentUpon>
-      <LastGenOutput>Exchange.cs</LastGenOutput>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

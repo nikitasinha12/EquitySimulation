@@ -7,12 +7,33 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Mock_Project.DataModel
+namespace Internal_System.DataModel
 {
     using System;
     using System.Collections.Generic;
     
     public partial class User
     {
+        public User()
+        {
+            this.Blocks = new HashSet<Block>();
+            this.Orders = new HashSet<Order>();
+            this.Portfolios = new HashSet<Portfolio>();
+            this.User_Role = new HashSet<User_Role>();
+        }
+    
+        public long UserID { get; set; }
+        public string FName { get; set; }
+        public string LName { get; set; }
+        public string UserName { get; set; }
+        public string PassWord { get; set; }
+        public bool ISActive { get; set; }
+        public System.DateTime CreationDate { get; set; }
+        public System.DateTime UpdationDate { get; set; }
+    
+        public virtual ICollection<Block> Blocks { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Portfolio> Portfolios { get; set; }
+        public virtual ICollection<User_Role> User_Role { get; set; }
     }
 }

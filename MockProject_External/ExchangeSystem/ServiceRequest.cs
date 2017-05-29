@@ -11,8 +11,7 @@ namespace ExchangeSystem
 {
     using System;
     using System.Collections.Generic;
-    using System.Runtime.Serialization;
-    [DataContract]
+    
     public partial class ServiceRequest
     {
         public int RequestID { get; set; }

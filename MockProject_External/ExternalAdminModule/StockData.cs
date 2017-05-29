@@ -14,6 +14,7 @@ namespace ExternalAdminModule
     
     public partial class StockData
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public StockData()
         {
             this.ServiceRequests = new HashSet<ServiceRequest>();
@@ -26,7 +27,9 @@ namespace ExternalAdminModule
         public long QuantityAvailable { get; set; }
         public int MarketPrice { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ServiceRequest> ServiceRequests { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Transaction> Transactions { get; set; }
     }
 }
