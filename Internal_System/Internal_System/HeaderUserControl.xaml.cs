@@ -34,9 +34,9 @@ namespace Internal_System
             {
                 lblSignOut.Visibility = Visibility.Hidden;
             }
-            if(App.Current.Windows.Count > 1)
+            if(App.Current.Windows.Count > 2)
             {
-                if(App.Current.Windows[1].Title.Equals("CreateOrder"))
+               if(App.Current.Windows[2].Title.Equals("CreateOrder"))
                     lblSignOut.Visibility = Visibility.Hidden;
             }
             if (Session.CurrentUser == null)
