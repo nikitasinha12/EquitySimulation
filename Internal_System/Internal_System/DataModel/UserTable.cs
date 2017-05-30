@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Internal_System.DataModel
 {
-    public partial class User : BaseViewModel
+    public partial class UserTable : BaseViewModel
     {
         private string _userName;
         private string _password;
-        public User()
+        public UserTable()
         {
             this.Blocks = new HashSet<Block>();
             this.Orders = new HashSet<Order>();

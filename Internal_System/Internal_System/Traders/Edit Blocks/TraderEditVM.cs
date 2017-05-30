@@ -3,7 +3,6 @@ using Internal_System.Commands;
 using Internal_System.DataModel;
 using Internal_System.Traders.TraderDashboard;
 using Internal_System.Traders;
-using Internal_System.Traders.TraderDashboard;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;

@@ -11,7 +11,6 @@ using Internal_System.DataModel;
 using Internal_System.Mapper;
 using Internal_System.MapperModels;
 using Internal_System.Traders.TraderDashboard;
-using Internal_System.Traders.TraderDashboard;
 
 namespace Internal_System.Traders.Cancel_Blocks
 {
